@@ -1,6 +1,12 @@
 # unattended-upgrades cookbook
 
-This cookbook configures the unattended-upgrades package which performs automatic package updates on debian systems
+This cookbook configures the unattended-upgrades package which performs automatic package updates on debian systems.
+
+Test status:
+
+[![Build Status](https://travis-ci.org/jeremyolliver/cookbook-unattended-upgrades.png?branch=master)](https://travis-ci.org/jeremyolliver/cookbook-unattended-upgrades)
+
+CI automatically runs linting tests. You may also run more thorough integration tests via Vagrant as well. See below for details on how to do that.
 
 # Requirements
 
