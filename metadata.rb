@@ -9,6 +9,6 @@ version          "0.1.0"
 supports "debian"
 supports "ubuntu"
 
-recommends "apt"
+depends "apt"
 
 provides "recipe[unattended-upgrades::default]"

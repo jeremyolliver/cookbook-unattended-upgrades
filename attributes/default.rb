@@ -14,3 +14,5 @@ default['unattended-upgrades']['allowed_origins'] = {
   'proposed'  => false,
   'backports' => false
 }
+
+default['unattended-upgrades']['apt_recipe'] = 'default'

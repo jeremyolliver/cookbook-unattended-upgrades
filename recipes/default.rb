@@ -17,10 +17,13 @@
 # limitations under the License.
 #
 
+# include apt::default (or an alternate apt recipe)
+include_recipe "apt::#{node['unattended-upgrades']['apt_recipe']}"
+
 package 'unattended-upgrades'
 
 if node['unattended-upgrades']['admin_email']
-  package 'mailx' # Ensures we can mail notification of any issues
+  package 'mailutils' # provides 'mailx' to ensure we can mail notification of any issues
 end
 
 template '/etc/apt/apt.conf.d/50unattended-upgrades' do

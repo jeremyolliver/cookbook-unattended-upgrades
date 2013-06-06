@@ -4,7 +4,7 @@ This cookbook configures the unattended-upgrades package which performs automati
 
 # Requirements
 
-Debian or Ubuntu. It is also recommended that you include the "apt" cookbook prior to this cookbook.
+Debian or Ubuntu Operating System and the `apt` cookbook
 
 # Usage
 
@@ -67,6 +67,18 @@ TODO: Third party PPA's are not yet supported in the allowed origins section
 # Recipes
 
 `unattended-upgrades::default`
+
+# Cookbook Development
+
+Running the tests for this cookbook involves:
+
+Requires:
+* ruby 1.9.2+
+* bundler
+* Vagrant 1.2+ (and Virtualbox)
+* `vagrant plugin install vagrant-berkshelf`
+
+Run the lint tests via: `bundle exec thor foodcritic:lint`. Run the full integration tests via: `vagrant up` for first run and `vagrant provision`. Destroy the test VM via `vagrant destroy`
 
 # Author
 
