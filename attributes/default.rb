@@ -1,3 +1,9 @@
+default['unattended-upgrades']['enable'] = 1
+default['unattended-upgrades']['update_package_list_interval'] = 1
+default['unattended-upgrades']['download_upgradeable_packages_interval'] = 1
+default['unattended-upgrades']['autoclean_interval'] = 7
+default['unattended-upgrades']['unattended_upgrade_interval'] = 1
+
 default['unattended-upgrades']['admin_email']                = 'root@localhost' # Set to nil to disable, or override to another value
 default['unattended-upgrades']['package_blacklist']          = []
 default['unattended-upgrades']['autofix_dpkg']               = true  # Strongly advised not to change

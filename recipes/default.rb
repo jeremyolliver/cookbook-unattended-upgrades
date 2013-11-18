@@ -26,6 +26,13 @@ if node['unattended-upgrades']['admin_email']
   package 'mailutils' # provides 'mailx' to ensure we can mail notification of any issues
 end
 
+template '/etc/apt/apt.conf.d/10periodic' do
+  source '10periodic.erb'
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
+
 template '/etc/apt/apt.conf.d/50unattended-upgrades' do
   source 'unattended-upgrades.conf.erb'
   owner 'root'
