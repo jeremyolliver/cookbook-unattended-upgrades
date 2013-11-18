@@ -32,7 +32,16 @@ describe_recipe 'unattended-upgrades::default' do
 
     it 'should contain the security updates origin' do
       # Although this test may fail on a setup with minitest-handler running on a live server - security updates really shouldn't be turned off
-      config.must_include '"${distro_id}:${distro_codename}-security";'
+      case node['platform']
+        when 'ubuntu'
+          config.must_include '"${distro_id}:${distro_codename}-security";'
+        when 'debian'
+          if node['platform_version'].to_f < 7
+            config.must_include '"${distro_id}:${distro_codename}-security";'
+          else
+            config.must_include '"o=Debian,a=stable,l=Debian-Security";'
+          end
+      end
     end
   end
 

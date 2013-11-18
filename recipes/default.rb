@@ -33,6 +33,7 @@ template '/etc/apt/apt.conf.d/50unattended-upgrades' do
   mode  '0644'
   variables(
     :allowed_origins            => node['unattended-upgrades']['allowed_origins'],
+    :origins_pattern            => node['unattended-upgrades']['origins_pattern'],
     :package_blacklist          => node['unattended-upgrades']['package_blacklist'],
     :autofix_dpkg               => node['unattended-upgrades']['autofix_dpkg'],
     :minimal_steps              => node['unattended-upgrades']['minimal_steps'],
