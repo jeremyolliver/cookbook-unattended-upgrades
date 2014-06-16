@@ -23,7 +23,10 @@ include_recipe "apt::#{node['unattended-upgrades']['apt_recipe']}"
 package 'unattended-upgrades'
 
 if node['unattended-upgrades']['admin_email']
-  package 'mailutils' # provides 'mailx' to ensure we can mail notification of any issues
+  package_name = node['unattended-upgrades']['mail-package']
+  if package_name
+    package package_name # provides 'mailx' to ensure we can mail notification of any issues
+  end
 end
 
 template '/etc/apt/apt.conf.d/50unattended-upgrades' do
