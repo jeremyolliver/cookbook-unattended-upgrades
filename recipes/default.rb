@@ -26,6 +26,13 @@ if node['unattended-upgrades']['admin_email']
   package 'mailutils' # provides 'mailx' to ensure we can mail notification of any issues
 end
 
+template '/etc/apt/apt.conf.d/10periodic' do
+  source '10periodic.erb'
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
+
 template '/etc/apt/apt.conf.d/50unattended-upgrades' do
   source 'unattended-upgrades.conf.erb'
   owner 'root'
@@ -33,6 +40,7 @@ template '/etc/apt/apt.conf.d/50unattended-upgrades' do
   mode  '0644'
   variables(
     :allowed_origins            => node['unattended-upgrades']['allowed_origins'],
+    :origins_pattern            => node['unattended-upgrades']['origins_pattern'],
     :package_blacklist          => node['unattended-upgrades']['package_blacklist'],
     :autofix_dpkg               => node['unattended-upgrades']['autofix_dpkg'],
     :minimal_steps              => node['unattended-upgrades']['minimal_steps'],
