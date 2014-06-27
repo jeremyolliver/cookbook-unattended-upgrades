@@ -1,0 +1,4 @@
+<% if @update_package_lists_interval -%>APT::Periodic::Update-Package-Lists "<%= @update_package_lists_interval %>";<% end -%>
+<% if @upgrade_interval -%>APT::Periodic::Unattended-Upgrade "<%= @upgrade_interval %>";<% end -%>
+<% if @download_upgradeable_interval -%>APT::Periodic::Download-Upgradeable-Packages "<%= @download_upgradeable_interval %>";<% end -%>
+<% if @autoclean_interval -%>APT::Periodic::AutocleanInterval "<%= @autoclean_interval%>";<% end -%>

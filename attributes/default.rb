@@ -16,3 +16,9 @@ default['unattended-upgrades']['allowed_origins'] = {
 }
 
 default['unattended-upgrades']['apt_recipe'] = 'default'
+
+# interval settings in days
+default['unattended-upgrades']['update_package_lists_interval'] = 1
+default['unattended-upgrades']['upgrade_interval'] = 1 # In order for unattended upgrades to run at all, this must be set to an integer greater than or equal to 1
+default['unattended-upgrades']['download_upgradeable_interval'] = nil
+default['unattended-upgrades']['autoclean_interval'] = nil

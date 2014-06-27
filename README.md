@@ -69,6 +69,10 @@ TODO: Third party PPA's are not yet supported in the allowed origins section
 * `['unattended-upgrades']['remove_unused_dependencies']`
 * `['unattended-upgrades']['automatic_reboot']`
 * `['unattended-upgrades']['download_limit']`
+* `['unattended_upgrades']['update_package_lists_interval']
+* `['unattended_upgrades']['upgrade_interval']
+* `['unattended_upgrades']['download_upgradeable_interval']
+* `['unattended_upgrades']['autoclean_interval']
 
 # Recipes
 
