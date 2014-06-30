@@ -28,7 +28,6 @@ ruby_block 'ensure mail agent installed' do
     bin_path = `which mailx`.chomp
     unless bin_path.present?
       Chef::Log.warn("No mail package detected. If you want to be able to mail the results of upgrades, you should a package provides the `mailx` such as mailutils or heirloom-mailx")
-      raise "woah!"
     end
   end
 end
