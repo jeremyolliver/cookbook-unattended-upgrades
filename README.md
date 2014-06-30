@@ -2,11 +2,11 @@
 
 This cookbook configures the unattended-upgrades package which performs automatic package updates on debian systems.
 
-Test status:
+Build status:
 
 [![Build Status](https://travis-ci.org/jeremyolliver/cookbook-unattended-upgrades.png?branch=master)](https://travis-ci.org/jeremyolliver/cookbook-unattended-upgrades)
 
-CI automatically runs linting tests. You may also run more thorough integration tests via Vagrant as well. See below for details on how to do that.
+CI automatically runs linting and unit tests. You may also run more thorough integration tests via Vagrant as well. See below for details on how to do that.
 
 # Requirements
 
@@ -84,11 +84,11 @@ Running the tests for this cookbook involves:
 
 Requires:
 * ruby 1.9.2+
-* bundler
+* bundler (`gem install bundler` and `bundle install`)
 * Vagrant 1.2+ (and Virtualbox)
 * `vagrant plugin install vagrant-berkshelf`
 
-Run the lint tests via: `bundle exec thor foodcritic:lint`. Run the full integration tests via: `vagrant up` for first run and `vagrant provision`. Destroy the test VM via `vagrant destroy`
+Run the lint tests via: `bundle exec rake style`. Run the full integration tests via: `bundle exec kitchen converge all` and `bundle exec kitchen verify all`. To remove the VM's `bundle exec kitchen destroy all`
 
 # Author
 
