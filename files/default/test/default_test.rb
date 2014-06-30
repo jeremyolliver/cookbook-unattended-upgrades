@@ -8,9 +8,6 @@ describe_recipe 'unattended-upgrades::default' do
     it 'installs unattended-upgrades' do
       package("unattended-upgrades").must_be_installed
     end
-    it 'installs mailutils' do
-      package("mailutils").must_be_installed
-    end
   end
 
   describe 'files' do
