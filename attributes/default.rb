@@ -8,6 +8,8 @@ default['unattended-upgrades']['remove_unused_dependencies'] = false
 default['unattended-upgrades']['automatic_reboot']           = false
 default['unattended-upgrades']['download_limit']             = nil   # Set to Integer representing kb/sec limit
 
+default['unattended-upgrades']['mail-package'] = 'mailutils' # Override to install a different package. Set to false to skip installing one
+
 default['unattended-upgrades']['allowed_origins'] = {
   'security'  => true,
   'updates'   => false,
