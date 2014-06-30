@@ -14,30 +14,20 @@ end
 desc 'Run all style checks'
 task style: ['style:chef', 'style:cane']
 
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => [:style, :spec]
+
+
 begin
-  require 'kitchen'
-  SafeYAML::OPTIONS[:default_mode] = :unsafe if defined?(SafeYAML)
-  desc 'Run Test Kitchen integration tests'
-  task :integration do
-    Kitchen.logger = Kitchen.default_file_logger
-    Kitchen::Config.new.instances.each do |instance|
-      instance.test(:always)
-    end
+  require 'stove/rake_task'
+
+  Stove::RakeTask.new do |stove|
+    stove.git      = true
+    stove.category = 'Package Management'
   end
-rescue LoadError => ignore_kitchen_in_ci
-  puts "error: kitchen gem not loaded" unless ENV['CI']
-end
-
-require 'stove/rake_task'
-
-Stove::RakeTask.new do |stove|
-  stove.git      = true
-  stove.category = 'Package Management'
-end
-
-begin
-  require 'kitchen/rake_tasks'
-  Kitchen::RakeTasks.new
-rescue LoadError
-  puts ">>>>> Kitchen gem not loaded, omitting tasks" unless ENV['CI']
+rescue LoadError => e
+  # Do nothing
 end
