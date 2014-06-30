@@ -19,6 +19,17 @@ describe 'unattended-upgrades::default' do
         expect(chef_run).to render_file('/etc/apt/apt.conf.d/50unattended-upgrades').with_content('Unattended-Upgrade::Mail "root@localhost"')
         expect(chef_run).to render_file('/etc/apt/apt.conf.d/20auto-upgrades').with_content('APT::Periodic::Unattended-Upgrade "1"')
       end
+
+      it 'should not warn about missing mail package' do
+        expect(chef_run).to_not run_ruby_block 'warn-on-missing-mailer'
+      end
+
+      describe 'without mailer package' do
+        before { stub_command('which mailx').and_return('') }
+        it 'should run warnings' do
+          expect(chef_run).to run_ruby_block 'warn-on-missing-mailer'
+        end
+      end
     end
   end
 

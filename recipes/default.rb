@@ -22,14 +22,12 @@ include_recipe "apt::#{node['unattended-upgrades']['apt_recipe']}"
 
 package 'unattended-upgrades'
 
-# Stock systems should already have a compatible mail delivery mechanism, lets switch to a warning instead of installing potentially un-needed packages
-ruby_block 'ensure mail agent installed' do
+# Stock systems should already have a compatible mail delivery mechanism (e.g. mailx binary) installed - warn if one is not detected
+ruby_block 'warn-on-missing-mailer' do
   block do
-    bin_path = `which mailx`.chomp
-    unless bin_path.present?
-      Chef::Log.warn("No mail package detected. If you want to be able to mail the results of upgrades, you should a package provides the `mailx` such as mailutils or heirloom-mailx")
-    end
+    Chef::Log.warn("No mail package detected. If you want to be able to mail the output of unattended-upgrades, you should a package provides the `mailx` such as 'mailutils' or 'heirloom-mailx'")
   end
+  not_if 'which mailx'
 end
 
 template '/etc/apt/apt.conf.d/50unattended-upgrades' do
