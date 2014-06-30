@@ -1,7 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf'
-gem 'thor-foodcritic'
+group :development do
+  gem 'berkshelf'
+  gem 'rake'
+  gem 'foodcritic'
+  gem 'cane'
+end
 
-gem 'rake'
-gem 'stove'
+group :integration do
+  gem 'test-kitchen'
+end
+
+group :release do
+  gem 'stove'
+end
