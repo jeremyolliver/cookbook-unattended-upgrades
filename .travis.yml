@@ -3,7 +3,10 @@ rvm:
   - 2.0.0
 cache:
   - bundler
-script: bundle exec rake style spec
+script:
+  - bundle exec rake style:ruby
+  - bundle exec foodcritic -f correctness .
+  - bundle exec rake spec
 branches:
   only:
     - master

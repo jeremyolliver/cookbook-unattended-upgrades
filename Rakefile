@@ -4,7 +4,7 @@ require 'bundler/setup'
 namespace :style do
   require 'cane/rake_task'
   desc 'Run Ruby metrics checks'
-  Cane::RakeTask.new(:cane)
+  Cane::RakeTask.new(:ruby)
 
   require 'foodcritic'
   desc 'Run Chef style checks'
@@ -12,7 +12,7 @@ namespace :style do
 end
 
 desc 'Run all style checks'
-task style: ['style:chef', 'style:cane']
+task style: ['style:chef', 'style:ruby']
 
 require 'rspec/core/rake_task'
 
