@@ -1,0 +1,4 @@
+--color
+--style-glob '{attributes,definitions,libraries,providers,recipes,resources,test}/**/*.rb'
+--abc-glob '{attributes,definitions,libraries,providers,recipes,resources}/**/*.rb'
+--style-measure 100
