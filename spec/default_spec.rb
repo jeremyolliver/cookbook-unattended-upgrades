@@ -25,7 +25,7 @@ describe 'unattended-upgrades::default' do
       end
 
       describe 'without mailer package' do
-        before { stub_command('which mailx').and_return('') }
+        before { stub_command('which mailx').and_return(false) }
         it 'should run warnings' do
           expect(chef_run).to run_ruby_block 'warn-on-missing-mailer'
         end
