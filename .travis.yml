@@ -1,7 +1,13 @@
 language: ruby
 rvm:
-  - 1.9.3
-script: bundle exec rake style
+  - 2.0.0
+cache:
+  - bundler
+script: bundle exec rake style spec
+branches:
+  only:
+    - master
+    - develop
 notifications:
   recipients:
     - jeremy.olliver@gmail.com
