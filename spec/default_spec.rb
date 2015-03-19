@@ -16,8 +16,16 @@ describe 'unattended-upgrades::default' do
       end
 
       it 'should write the config files' do
-        expect(chef_run).to render_file('/etc/apt/apt.conf.d/50unattended-upgrades').with_content('Unattended-Upgrade::Mail "root@localhost"')
-        expect(chef_run).to render_file('/etc/apt/apt.conf.d/20auto-upgrades').with_content('APT::Periodic::Unattended-Upgrade "1"')
+        expect(chef_run).to render_file('/etc/apt/apt.conf.d/50unattended-upgrades')
+          .with_content('Unattended-Upgrade::Mail "root@localhost"')
+        expect(chef_run).to render_file('/etc/apt/apt.conf.d/50unattended-upgrades')
+          .with_content('Unattended-Upgrade::Allowed-Origins')
+        expect(chef_run).to_not render_file('/etc/apt/apt.conf.d/50unattended-upgrades')
+          .with_content('Unattended-Upgrade::Origins-Pattern')
+        expect(chef_run).to render_file('/etc/apt/apt.conf.d/50unattended-upgrades')
+          .with_content('"${distro_id}:${distro_codename}-security"')
+        expect(chef_run).to render_file('/etc/apt/apt.conf.d/20auto-upgrades')
+          .with_content('APT::Periodic::Unattended-Upgrade "1"')
       end
 
       it 'should not warn about missing mail package' do
@@ -41,8 +49,16 @@ describe 'unattended-upgrades::default' do
     end
 
     it 'should write the config files' do
-      expect(chef_run).to render_file('/etc/apt/apt.conf.d/50unattended-upgrades').with_content('Unattended-Upgrade::Mail')
-      expect(chef_run).to render_file('/etc/apt/apt.conf.d/20auto-upgrades').with_content('APT::Periodic::Unattended-Upgrade "1"')
+      expect(chef_run).to render_file('/etc/apt/apt.conf.d/50unattended-upgrades').
+        with_content('Unattended-Upgrade::Mail')
+      expect(chef_run).to_not render_file('/etc/apt/apt.conf.d/50unattended-upgrades')
+        .with_content('Unattended-Upgrade::Allowed-Origins')
+      expect(chef_run).to render_file('/etc/apt/apt.conf.d/50unattended-upgrades')
+        .with_content('Unattended-Upgrade::Origins-Pattern')
+      expect(chef_run).to render_file('/etc/apt/apt.conf.d/50unattended-upgrades')
+        .with_content('origin=Debian,archive=stable,label=Debian-Security')
+      expect(chef_run).to render_file('/etc/apt/apt.conf.d/20auto-upgrades')
+        .with_content('APT::Periodic::Unattended-Upgrade "1"')
     end
   end
 
