@@ -1,0 +1,11 @@
+---
+engines:
+foodcritic:
+    enabled: true
+  rubocop:
+    enabled: true
+ratings:
+  paths:
+  - "**.rb"
+exclude_paths:
+- spec/**/*
