@@ -1,11 +1,24 @@
 // File configured by chef - don't edit manually
 
+<% unless @allowed_origins.empty? %>
 // Automatically upgrade packages from these (origin:archive) pairs
 Unattended-Upgrade::Allowed-Origins {
 <% @allowed_origins.each do |origin, enabled| %>
-<%= '//' unless enabled %>  "${distro_id}:${distro_codename}-<%= origin %>";
+  <%= "\"${distro_id}:${distro_codename}-#{origin}\";" if enabled -%>
 <% end %>
+
 };
+<% end %>
+
+<% unless @origin_patterns.empty? %>
+// Automatically upgrade packages from these origin patterns
+Unattended-Upgrade::Origins-Pattern {
+<% @origin_patterns.each do |pattern, enabled| %>
+  <%= "\"#{pattern}\";" if enabled -%>
+<% end %>
+
+};
+<% end %>
 
 // List of packages to not update
 Unattended-Upgrade::Package-Blacklist {

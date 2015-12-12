@@ -8,12 +8,21 @@ default['unattended-upgrades']['remove_unused_dependencies'] = false
 default['unattended-upgrades']['automatic_reboot']           = false
 default['unattended-upgrades']['download_limit']             = nil   # Set to Integer representing kb/sec limit
 
-default['unattended-upgrades']['allowed_origins'] = {
-  'security'  => true,
-  'updates'   => false,
-  'proposed'  => false,
-  'backports' => false
-}
+case node['platform']
+when 'ubuntu'
+  default['unattended-upgrades']['allowed_origins'] = {
+    'security'  => true,
+    'updates'   => false,
+    'proposed'  => false,
+    'backports' => false
+  }
+  default['unattended-upgrades']['origin_patterns'] = {}
+when 'debian'
+  default['unattended-upgrades']['allowed_origins'] = {}
+  default['unattended-upgrades']['origin_patterns'] = {
+    'origin=Debian,archive=stable,label=Debian-Security' => true
+  }
+end
 
 default['unattended-upgrades']['apt_recipe'] = 'default'
 
