@@ -1,5 +1,7 @@
 # unattended-upgrades cookbook
 
+[![Join the chat at https://gitter.im/jeremyolliver/cookbook-unattended-upgrades](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jeremyolliver/cookbook-unattended-upgrades?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This cookbook configures the unattended-upgrades package which performs automatic package updates on debian systems.
 
 Build status:
