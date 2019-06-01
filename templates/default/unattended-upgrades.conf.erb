@@ -50,6 +50,11 @@ Unattended-Upgrade::InstallOnShutdown "<%= @install_on_shutdown %>";
 //Unattended-Upgrade::MailOnlyOnError "true";
 Unattended-Upgrade::MailOnlyOnError "<%= @mail_only_on_error %>";
 
+// Remove unused automatically installed kernel-related packages
+// (kernel images, kernel headers and kernel version locked tools).
+//Unattended-Upgrade::Remove-Unused-Kernel-Packages "false";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "<%= @remove_unused_kernel_packages %>";
+
 // Do automatic removal of new unused dependencies after the upgrade
 // (equivalent to apt-get autoremove)
 //Unattended-Upgrade::Remove-Unused-Dependencies "false";
@@ -63,6 +68,7 @@ Unattended-Upgrade::Automatic-Reboot "<%= @automatic_reboot %>";
 // If automatic reboot is enabled and needed, reboot at the specific
 // time instead of immediately
 //  Default: "now"
+//Unattended-Upgrade::Automatic-Reboot-Time "02:00";
 Unattended-Upgrade::Automatic-Reboot-Time "<%= @automatic_reboot_time %>";
 
 // Use apt bandwidth limit feature, this example limits the download

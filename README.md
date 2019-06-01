@@ -71,6 +71,7 @@ TODO: Third party PPA's are not yet supported in the allowed origins section
 * `['unattended-upgrades']['install_on_shutdown']`
 * `['unattended-upgrades']['mail_only_on_error']`
 * `['unattended-upgrades']['remove_unused_dependencies']`
+* `['unattended-upgrades']['remove_unused_kernel_packages']`
 * `['unattended-upgrades']['automatic_reboot']`
 * `['unattended-upgrades']['automatic_reboot_time']`
 * `['unattended-upgrades']['download_limit']`
