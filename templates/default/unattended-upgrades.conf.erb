@@ -69,7 +69,7 @@ Unattended-Upgrade::Automatic-Reboot "<%= @automatic_reboot %>";
 // time instead of immediately
 //  Default: "now"
 //Unattended-Upgrade::Automatic-Reboot-Time "02:00";
-Unattended-Upgrade::Automatic-Reboot-Time "<%= @automatic_reboot_time %>";
+<% if @automatic_reboot_time %>Unattended-Upgrade::Automatic-Reboot-Time "<%= @automatic_reboot_time %>";<% end %>
 
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
