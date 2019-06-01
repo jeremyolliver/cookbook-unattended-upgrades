@@ -9,6 +9,8 @@ default['unattended-upgrades']['remove_unused_kernel_packages'] = false
 default['unattended-upgrades']['automatic_reboot']              = false
 default['unattended-upgrades']['automatic_reboot_time']         = nil   # set to 24h time (23:00 for 11 PM)
 default['unattended-upgrades']['download_limit']                = nil   # Set to Integer representing kb/sec limit
+default['unattended-upgrades']['syslog_enable']                 = nil   # added in 0.92
+default['unattended-upgrades']['syslog_facility']               = nil   # added in 0.92
 
 default['unattended-upgrades']['allowed_origins'] = {
   'security'  => true,

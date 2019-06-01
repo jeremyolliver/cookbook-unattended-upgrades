@@ -79,6 +79,8 @@ TODO: Third party PPA's are not yet supported in the allowed origins section
 * `['unattended_upgrades']['upgrade_interval']`
 * `['unattended_upgrades']['download_upgradeable_interval']`
 * `['unattended_upgrades']['autoclean_interval']`
+* `['unattended_upgrades']['syslog_enable']`
+* `['unattended_upgrades']['syslog_facility']`
 
 # Recipes
 

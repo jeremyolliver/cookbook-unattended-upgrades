@@ -47,7 +47,9 @@ template '/etc/apt/apt.conf.d/50unattended-upgrades' do
     :remove_unused_kernel_packages => node['unattended-upgrades']['remove_unused_kernel_packages'],
     :automatic_reboot              => node['unattended-upgrades']['automatic_reboot'],
     :automatic_reboot_time         => node['unattended-upgrades']['automatic_reboot_time'],
-    :download_limit                => node['unattended-upgrades']['download_limit']
+    :download_limit                => node['unattended-upgrades']['download_limit'],
+    :syslog_enable                 => node['unattended-upgrades']['syslog_enable'],
+    :syslog_facility               => node['unattended-upgrades']['syslog_facility']
   )
 end
 
