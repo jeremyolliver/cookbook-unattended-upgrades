@@ -45,6 +45,7 @@ template '/etc/apt/apt.conf.d/50unattended-upgrades' do
     :mail_only_on_error         => node['unattended-upgrades']['mail_only_on_error'],
     :remove_unused_dependencies => node['unattended-upgrades']['remove_unused_dependencies'],
     :automatic_reboot           => node['unattended-upgrades']['automatic_reboot'],
+    :automatic_reboot_time      => node['unattended-upgrades']['automatic_reboot_time'],
     :download_limit             => node['unattended-upgrades']['download_limit']
   )
 end

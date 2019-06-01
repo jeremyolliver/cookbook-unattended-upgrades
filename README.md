@@ -58,6 +58,10 @@ TODO: Third party PPA's are not yet supported in the allowed origins section
 
 `node['unattended-upgrades']['minimal_steps']` Set this to `true` if you expect to be able to reboot the server with minimal interruption and the updates might be running at the time. With this left on the default value of false, the server will wait for all updates to complete before shutting down. See the full attributes list and the comments in the template file for more information. This cookbook has strived to provide configurable attributes for as many options as possible to allow maximum flexibility.
 
+`node['unattended-upgrades']['automatic_reboot']` Set this to `true` if you want to restart server automatically when required (e.g. kernel updates), make sure all services are set to start automatically on reboot and that your system is monitored. You may also want to set `node['unattended-upgrades']['automatic_reboot_time']` to control reboot time.
+
+`node['unattended-upgrades']['automatic_reboot_time']` set this to a time of day to perform reboots, should be set in 24h format so `13:00` equals `1 PM` and `05:00` equals `5 AM`
+
 # Attributes
 
 * `['unattended-upgrades']['admin_email']`
@@ -68,6 +72,7 @@ TODO: Third party PPA's are not yet supported in the allowed origins section
 * `['unattended-upgrades']['mail_only_on_error']`
 * `['unattended-upgrades']['remove_unused_dependencies']`
 * `['unattended-upgrades']['automatic_reboot']`
+* `['unattended-upgrades']['automatic_reboot_time']`
 * `['unattended-upgrades']['download_limit']`
 * `['unattended_upgrades']['update_package_lists_interval']`
 * `['unattended_upgrades']['upgrade_interval']`
