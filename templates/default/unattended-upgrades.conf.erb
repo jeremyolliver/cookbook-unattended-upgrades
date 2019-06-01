@@ -50,6 +50,11 @@ Unattended-Upgrade::InstallOnShutdown "<%= @install_on_shutdown %>";
 //Unattended-Upgrade::MailOnlyOnError "true";
 Unattended-Upgrade::MailOnlyOnError "<%= @mail_only_on_error %>";
 
+// Remove unused automatically installed kernel-related packages
+// (kernel images, kernel headers and kernel version locked tools).
+//Unattended-Upgrade::Remove-Unused-Kernel-Packages "false";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "<%= @remove_unused_kernel_packages %>";
+
 // Do automatic removal of new unused dependencies after the upgrade
 // (equivalent to apt-get autoremove)
 //Unattended-Upgrade::Remove-Unused-Dependencies "false";
@@ -60,8 +65,31 @@ Unattended-Upgrade::Remove-Unused-Dependencies "<%= @remove_unused_dependencies 
 //Unattended-Upgrade::Automatic-Reboot "false";
 Unattended-Upgrade::Automatic-Reboot "<%= @automatic_reboot %>";
 
+// If automatic reboot is enabled and needed, reboot at the specific
+// time instead of immediately
+//  Default: "now"
+//Unattended-Upgrade::Automatic-Reboot-Time "02:00";
+<% if @automatic_reboot_time %>Unattended-Upgrade::Automatic-Reboot-Time "<%= @automatic_reboot_time %>";<% end %>
 
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
 //Acquire::http::Dl-Limit "70";
 <% if @download_limit %>Acquire::http::Dl-Limit "<%= @download_limit %>";<% end %>
+
+// Enable logging to syslog. Default is False
+// Unattended-Upgrade::SyslogEnable "false";
+<% if @syslog_enable %>Unattended-Upgrade::SyslogEnable "<%= @syslog_enable %>";<% end %>
+
+// Specify syslog facility. Default is daemon
+// Unattended-Upgrade::SyslogFacility "daemon";
+<% if @syslog_facility %>Unattended-Upgrade::SyslogFacility "<%= @syslog_facility %>";<% end %>
+
+// Download and install upgrades only on AC power
+// (i.e. skip or gracefully stop updates on battery)
+// Unattended-Upgrade::OnlyOnACPower "true";
+<% if @only_on_ac_power %>Unattended-Upgrade::OnlyOnACPower "<%= @only_on_ac_power %>";<% end %>
+
+// Download and install upgrades only on non-metered connection
+// (i.e. skip or gracefully stop updates on a metered connection)
+// Unattended-Upgrade::Skip-Updates-On-Metered-Connections "true";
+<% if @skip_on_metered %>Unattended-Upgrade::Skip-Updates-On-Metered-Connections "<%= @skip_on_metered %>";<% end %>

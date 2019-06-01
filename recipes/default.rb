@@ -36,16 +36,22 @@ template '/etc/apt/apt.conf.d/50unattended-upgrades' do
   group 'root'
   mode  '0644'
   variables(
-    :allowed_origins            => node['unattended-upgrades']['allowed_origins'],
-    :package_blacklist          => node['unattended-upgrades']['package_blacklist'],
-    :autofix_dpkg               => node['unattended-upgrades']['autofix_dpkg'],
-    :minimal_steps              => node['unattended-upgrades']['minimal_steps'],
-    :install_on_shutdown        => node['unattended-upgrades']['install_on_shutdown'],
-    :admin_email                => node['unattended-upgrades']['admin_email'],
-    :mail_only_on_error         => node['unattended-upgrades']['mail_only_on_error'],
-    :remove_unused_dependencies => node['unattended-upgrades']['remove_unused_dependencies'],
-    :automatic_reboot           => node['unattended-upgrades']['automatic_reboot'],
-    :download_limit             => node['unattended-upgrades']['download_limit']
+    :allowed_origins               => node['unattended-upgrades']['allowed_origins'],
+    :package_blacklist             => node['unattended-upgrades']['package_blacklist'],
+    :autofix_dpkg                  => node['unattended-upgrades']['autofix_dpkg'],
+    :minimal_steps                 => node['unattended-upgrades']['minimal_steps'],
+    :install_on_shutdown           => node['unattended-upgrades']['install_on_shutdown'],
+    :admin_email                   => node['unattended-upgrades']['admin_email'],
+    :mail_only_on_error            => node['unattended-upgrades']['mail_only_on_error'],
+    :remove_unused_dependencies    => node['unattended-upgrades']['remove_unused_dependencies'],
+    :remove_unused_kernel_packages => node['unattended-upgrades']['remove_unused_kernel_packages'],
+    :automatic_reboot              => node['unattended-upgrades']['automatic_reboot'],
+    :automatic_reboot_time         => node['unattended-upgrades']['automatic_reboot_time'],
+    :download_limit                => node['unattended-upgrades']['download_limit'],
+    :syslog_enable                 => node['unattended-upgrades']['syslog_enable'],
+    :syslog_facility               => node['unattended-upgrades']['syslog_facility'],
+    :only_on_ac_power              => node['unattended-upgrades']['only_on_ac_power'],
+    :skip_on_metered               => node['unattended-upgrades']['skip_on_metered']
   )
 end
 
