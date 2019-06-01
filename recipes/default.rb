@@ -49,7 +49,9 @@ template '/etc/apt/apt.conf.d/50unattended-upgrades' do
     :automatic_reboot_time         => node['unattended-upgrades']['automatic_reboot_time'],
     :download_limit                => node['unattended-upgrades']['download_limit'],
     :syslog_enable                 => node['unattended-upgrades']['syslog_enable'],
-    :syslog_facility               => node['unattended-upgrades']['syslog_facility']
+    :syslog_facility               => node['unattended-upgrades']['syslog_facility'],
+    :only_on_ac_power              => node['unattended-upgrades']['only_on_ac_power'],
+    :skip_on_metered               => node['unattended-upgrades']['skip_on_metered']
   )
 end
 
